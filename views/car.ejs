@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+</head>
+<body>
+<form action="/cars/create" method="POST">
+    <label for="MaXe">Mã Xe:</label>
+    <input type="text" id="MaXe" name="MaXe" required><br>
+
+    <label for="Name">Tên Xe:</label>
+    <input type="text" id="Name" name="Name" required><br>
+
+    <label for="Price">Giá:</label>
+    <input type="number" id="Price" name="Price" required><br>
+
+    <label for="Year">Năm sản xuất:</label>
+    <input type="number" id="Year" name="Year" required><br>
+
+    <label for="Brand">Hãng:</label>
+    <input type="text" id="Brand" name="Brand" required><br>
+
+    <button type="submit">Tạo</button>
+</form>
+<script>
+    function validateForm() {
+        const name = document.getElementById("Name").value;
+        const price = document.getElementById("Price").value;
+        const year = document.getElementById("Year").value;
+
+        if (!/^[a-zA-Z]+$/.test(name)) {
+            alert("Tên Xe phải là chữ.");
+            return false;
+        }
+
+        if (isNaN(price) || price <= 0) {
+            alert("Giá phải là số và lớn hơn 0.");
+            return false;
+        }
+
+        if (year < 1980 || year > 2024) {
+            alert("Năm sản xuất phải từ 1980 đến 2024.");
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>
